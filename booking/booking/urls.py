@@ -18,10 +18,17 @@ from django.urls import path
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+from accounts import views
+from django.conf.urls import url
 
+admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('booking/',include('bookings.urls')),
     path('events/',include('Eventbooking.urls')),
     path('accounts/',include('accounts.urls')),
-]
+    url(r'^userprofile/view/$', views.userprofile,name='userprofile'),
+    url(r'^userprofile/del/(?P<uid>[0-9A-Za-z_\-]+)/$', views.deleteprofile),
+    url(r'^userprofile/edit/(?P<user_id>[0-9A-Za-z_\-]+)/$', views.editprofile),
+            
+]  + static(settings.IMAGE_URL, document_root=settings.IMAGE_ROOT)

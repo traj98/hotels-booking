@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     )
 	firstname = models.CharField(max_length=100, blank=True)
 	lastname = models.CharField(max_length=100, blank=True)
-	mobile = PhoneField(blank=True)
+	mobile = models.IntegerField(max_length=10,null=True)
 	sex =  models.CharField(max_length=10, choices=GENRE_CHOICES, null=True)
 
 	def __str__(self):

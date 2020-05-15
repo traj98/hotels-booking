@@ -37,3 +37,36 @@ def register(request):
 		return render(request, 'registration/home.html')
 	else:
 		return render(request, 'registration/signup.html',{})
+
+
+def validate_username(request):
+	username = request.GET.get('username',None)
+	data = {
+		'is_taken':User.objects.filter(username__iexact=username).exists()
+	}
+	return JsonResponse(data)
+
+
+def editprofile(request,user_id):
+    user1 = UserProfile.objects.get(user=user_id)
+    if request.method == 'POST':
+        print(request.POST)
+        form = ProfileUpdateForm(request.POST, instance=user1)
+        if form.is_valid():
+            form.save()
+            return redirect('userprofile')
+    else:
+        form = ProfileUpdateForm(instance=user1)
+        return render(request, 'registration/edituserprofile.html',{'form': form})
+
+def deleteprofile(request,uid):
+    user1 = User.objects.get(pk=uid)
+    user1.delete()
+    users = UserProfile.objects.all()
+    return render(request, 'registration/userlist.html', {'users': users})
+
+def userprofile(request):
+    users = UserProfile.objects.all()
+    users1 = User.objects.all()
+    print(users1)
+    return render(request, 'registration/userlist.html', {'users': users,'users1':users1})

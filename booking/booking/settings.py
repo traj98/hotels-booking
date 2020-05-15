@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'Eventbooking.apps.EventbookingConfig',
     'accounts',
     'crispy_forms',
+    'rest_framework',
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -54,11 +56,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'booking.urls'
+LOGOUT_REDIRECT_URL = '/accounts/login'
+CRISPY_TEMPLATE_PACK ='bootstrap4'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        os.path.join(PROJECT_PATH,'booking','templates'),
+        os.path.join(BASE_DIR,'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +131,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+IMAGE_ROOT = os.path.join(BASE_DIR, 'documents')
+IMAGE_URL = '/documents/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'saeysteel2@gmail.com'
+EMAIL_HOST_PASSWORD = 'steel@saey'
+EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION='none'

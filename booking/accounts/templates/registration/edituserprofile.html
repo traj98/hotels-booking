@@ -1,0 +1,14 @@
+{% extends "accounts/base.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% block title %}Edit Profile{% endblock %}
+<h1 class="text-center">{% block pageheading %} Edit Profile {% endblock %} </h1>
+
+{% block main %}
+<form  method="POST" class="pure-form pure-form-aligned">{% csrf_token %}
+{{form | crispy }}
+<div class="pure-controls pure-input-2-3">
+	<button type="submit" class="pure-button pure-button-primary">Submit</button>
+</div>
+</form>
+{% endblock %}

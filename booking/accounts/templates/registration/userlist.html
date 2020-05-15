@@ -1,0 +1,19 @@
+{% extends "accounts/base.html" %}
+{% block title %}Profile Page{% endblock %}
+<h1 class="text-center">{% block pageheading %} Profile {% endblock %} </h1>
+{% block main %}
+{% for u in users %}
+{% if u.user.is_superuser %}
+{% else %}
+<p>
+	Username : {{u.user}}<br>
+	Firstname :{{u.firstname}}<br>
+	Lastname :{{u.lastname}}<br>
+	mobile :{{u.mobile}}<br>
+	sex :{{u.sex}}<br>
+</p>
+<a href="/userprofile/edit/{{u.user_id}}/"><button class="btn btn-warning notika-btn-warning waves-effect">Edit</button></a>
+<a href="/userprofile/del/{{u.user_id}}/"><button class="btn btn-danger notika-btn-danger waves-effect">Delete</button></a>
+{% endif %}
+{% endfor %}
+{% endblock %}
