@@ -1,0 +1,5 @@
+{% extends 'accounts/base.html' %}
+
+{% trans 'Your username is:' %}
+
+{{ username }}

@@ -1,0 +1,16 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Update profile {% endblock %}
+{% block pageheading %} Update profile {% endblock %} 
+{% load crispy_forms_tags %}
+{% block main %}
+<form method='post'>
+	{% csrf_token %}
+	<div class="card">
+		<div class="card-body">
+			
+		    {{ form | crispy }}
+		    <button type='submit'>Update Profile</button>
+		</div>
+	</div>
+</form>
+{% endblock %}

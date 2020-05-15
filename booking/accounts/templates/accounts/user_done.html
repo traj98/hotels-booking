@@ -1,0 +1,8 @@
+{% extends 'accounts/base.html' %}
+<title>{% block title %} Email Sent {% endblock %}</title>
+{% block main %}
+<h1 class="text-center">{% block pageheading %}  {% endblock %} </h1>
+<h1> Check your inbox</h1>
+<p>Your username has been successfully sent to your email. You should receive the email shortly</p>
+<button type="submit" class='btn btn-primary btn-block'onclick="window.location.href='http://localhost:8080/accounts/login/';">Log in</button>
+{% endblock %}

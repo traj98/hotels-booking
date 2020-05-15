@@ -1,0 +1,55 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% block pageheading %} Signup {% endblock %}
+{% block title %}Sign up {% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log("here");
+		$('#id_username').change(function(){
+		console.log("here")
+
+		var username =$(this).val();
+		$.ajax({
+			url: '/accounts/ajax/validate_username',
+			data: {
+				'username':username
+			},
+			dataType:'json',
+			success:function (data){
+				if(data.is_taken){
+					alert('A user with this username already exists');
+				}
+			}
+		});
+	});
+});	
+</script>
+{% endblock %}
+{% block main %}
+	<h2>Sign up</h2>
+	<form  data-action="{% url 'signup' %}" action="{% url 'signup' %}" method="post" id="user-register-form" accept-charset="UTF-8">{% csrf_token %}
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Username</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="text" id="edit-field-firstname-0-value" name="username" value="" placeholder="Username" size="30" required="required" aria-required="true" /><br><br>
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Email</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="text" id="edit-field-firstname-0-value" name="email" value="" size="34"  placeholder="Email" required="required" aria-required="true" /><br><br>
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">First Name</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="text" id="edit-field-firstname-0-value" name="firstname" value="" size="30"  placeholder="First Name" required="required" aria-required="true" /><br><br>
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Last Name</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="text" id="edit-field-firstname-0-value" name="lastname" value="" size="30"  placeholder="Last Name" required="required" aria-required="true" /><br><br>
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Gender</label>
+<input type="radio" name="sex"  value="M" checked="checked"> Male
+<input type="radio" name="sex"  value="F"> Female<br><br>
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Phone Number</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="text" id="edit-field-firstname-0-value" name="phone" value="" size="27"  placeholder="Phone Number" required="required" aria-required="true" /><br><br>
+
+<label for="edit-field-firstname-0-value" class="js-form-required form-required">Password</label>
+<input class="js-text-full text-full form-text required" data-drupal-selector="edit-field-firstname-0-value" type="password" id="password" name="password" value="" size="31"  placeholder="Password" required="required" aria-required="true" /><br><br>
+
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><div class="button button--arrow button--submit">
+  <input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Register" class="js-form-submit form-submit" />
+</div>
+
+</form>
+
+{% endblock %}

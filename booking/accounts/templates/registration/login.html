@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Login Page {% endblock %}
+{% block pageheading %} Login Page {% endblock %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="card">
+	<div class="card-body">
+		<h4 class="card-title">Log in to your account</h4>
+		<form method="post">
+			{% csrf_token %}
+			<input type="hidden" name='next'value='{{ next }}'>
+			{{form | crispy}}
+			<button type="submit" class='btn btn-primary btn-block'>Log in</button>
+			<a href="{% url 'signup' %}">Sign Up</a>
+			<a href="{% url 'password_reset' %}" style="float: right;" >Forget Password</a><br>
+			<a href="#" style="margin-left: 20%" >Forget Username</a>
+		</form>
+	</div>
+	
+</div>
+{% endblock %}
