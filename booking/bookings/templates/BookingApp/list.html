@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+<body>
+    
+    <a href="/Booking/">Create Booking</a>
+    <h2>Show List</h2>
+    <table border="2">
+        <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>age</th>
+            <th>proof</th>
+            <th>room_number</th>
+            <th>start_booking</th>
+            <th>end_booking</th>
+            <th>preferences</th>
+            <th>Action</th>
+        </tr>
+        {% for allproduct in products %}
+        <tr>
+            <td>{{ allproduct.username }}</td>
+            <td>{{ allproduct.email}}</td>
+            <td>{{ allproduct.phone }}</td>
+            <td>{{ allproduct.age }}</td>
+            <td>{{ allproduct.proof }}</td>
+            <td>{{ allproduct.room_number }}</td>
+            <td>{{ allproduct.start_booking }}</td>
+            <td>{{ allproduct.end_booking }}</td>
+            <td>{{ allproduct.preferences }}</td>
+            <td>
+                <a href="/edit/{{ allproduct.id }}">edit</a>
+                <a href="/delete/{{ allproduct.id }}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+</head>
+<body>
+    <form method="POST">{% csrf_token %}
+        
+        Username :- <input type="text" id="username" name="username" placeholder="username"><br>
+        Email :- <input type="email" id="email" name="email" placeholder="email"><br>
+        Phone :- <input type="phone" id="phone" name="phone" placeholder="phone"><br>
+        Age :- <input type="number" id="age" name="age" placeholder="age"><br>
+        Proof :- <input type="text" id="proof" name="proof" placeholder="proof"><br>
+        Event :- <input type="text" id="event" name="event" placeholder="event"><br>
+        Preferences :- <input type="text" id="preferences" name="preferences" placeholder="preferences"><br>
+
+        <!-- username:- {{ form.username }}
+        email:-{{ form.email }}
+        Phone:-{{ form.phone }}
+        age:-{{ form.age }}
+        proof:-{{ form.proof }}
+        room_number:-{{ form.room_number }}
+        start_booking:-{{ form.start_booking }}
+        end_booking :- {{ form.end_booking }}
+        preferences :- {{ form.preferences }} -->
+        <input type="submit" value="submit"><br><br>
+
+        <a href="/eventlist">List of All Booking</a>
+
+
+    </form>
+</body>
+</html>

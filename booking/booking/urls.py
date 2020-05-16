@@ -27,6 +27,8 @@ urlpatterns = [
     path('booking/',include('bookings.urls')),
     path('events/',include('Eventbooking.urls')),
     path('accounts/',include('accounts.urls')),
+     path('userpayment/', include('UserPayment.urls')),
+    path('rooms/', include('Rooms.urls')),
     url(r'^userprofile/view/$', views.userprofile,name='userprofile'),
     url(r'^userprofile/del/(?P<uid>[0-9A-Za-z_\-]+)/$', views.deleteprofile),
     url(r'^userprofile/edit/(?P<user_id>[0-9A-Za-z_\-]+)/$', views.editprofile),

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <form method="POST" action="/eventupdate/{{ product.id }}">
+        {% csrf_token %}
+        <h2>Update Details</h2>
+
+        Username :- <input type="text" id="username" name="username" placeholder="username" value="{{ product.username }}"><br>
+        Email :- <input type="email" id="email" name="email" placeholder="email" value="{{ product.email }}"><br>
+        Phone :- <input type="phone" id="phone" name="phone" placeholder="phone" value="{{ product.phone }}"><br>
+        Age :- <input type="number" id="age" name="age" placeholder="age" value="{{ product.age }}"><br>
+        Proof :- <input type="text" id="proof" name="proof" placeholder="proof" value="{{ product.proof }}"><br>
+        Event :- <input type="text" id="event" name="event" placeholder="event" value="{{ product.event }}"><br>
+        Preferences :- <input type="text" id="preferences" name="preferences" placeholder="preferences" value="{{ product.preferences }}"><br>
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

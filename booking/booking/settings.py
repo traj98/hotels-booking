@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookings.apps.BookingsConfig',
     'Eventbooking.apps.EventbookingConfig',
+    'UserPayment',
+    'Rooms',
     'accounts',
     'crispy_forms',
     'rest_framework',
